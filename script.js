@@ -45,7 +45,7 @@ const typeController = (e) => {
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
-    // counting error that i mistake while typing.
+    // counting error that i mistake while typing...
     errorCount++;
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
   }
@@ -122,7 +122,7 @@ const start = () => {
       startTime = new Date().getTime();
 
      
-      // countdownOverlay.innerHTML = ``;
+      // countdownOverlay when in comes to end .innerHTML = ``;
       countdownOverlay.style.display = 'none';
 
 
