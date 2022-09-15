@@ -11,7 +11,6 @@ let errorCount = 0;
 let startTime;
 let questionText = "";
 
-
 // Load and display question
 fetch("./texts.json")
   .then((res) => res.json())
@@ -46,6 +45,8 @@ const typeController = (e) => {
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
+    // edit korsi eikhane 
+    errorCount++;
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
   }
 
@@ -111,21 +112,27 @@ const start = () => {
     countdownOverlay.innerHTML = `<h1>${count}</h1>`;
 
     // finished timer
-    if (count < 0) {
+    if (count == 0) {
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "none";
+      countdownOverlay.style.display = "flex";
       display.classList.remove("inactive");
 
       clearInterval(startCountdown);
       startTime = new Date().getTime();
+
+      // my edited code 
+      // countdownOverlay.innerHTML = ``;
+      countdownOverlay.style.display = 'none';
+
+
     }
     count--;
   }, 1000);
 };
 
 // START Countdown
-startBtn.addEventListener("click", start);
+startBtn.addEventListener('click', start);
 
 // If history exists, show it
 displayHistory();
@@ -133,7 +140,10 @@ displayHistory();
 // Show typing time spent
 setInterval(() => {
   const currentTime = new Date().getTime();
-  const timeSpent = Math.round((currentTime - startTime) / 1000);
+
+  // my edited code 
+  // const timeSpent = (currentTime - startTime) / 1000;
+  const timeSpent = parseInt((currentTime - startTime) / 1000);
 
 
   document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
