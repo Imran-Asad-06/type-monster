@@ -121,7 +121,7 @@ const start = () => {
       clearInterval(startCountdown);
       startTime = new Date().getTime();
 
-      // my edited code 
+     
       // countdownOverlay.innerHTML = ``;
       countdownOverlay.style.display = 'none';
 
@@ -141,7 +141,7 @@ displayHistory();
 setInterval(() => {
   const currentTime = new Date().getTime();
 
-  // my edited code 
+  // 
   // const timeSpent = (currentTime - startTime) / 1000;
   const timeSpent = parseInt((currentTime - startTime) / 1000);
 
